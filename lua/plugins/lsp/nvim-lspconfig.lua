@@ -1,3 +1,5 @@
+local on_attach = require("util.lsp").on_attach
+local diagnostic_signs = require("util.icons").diagnostic_signs
 return {
     "neovim/nvim-lspconfig",
     event = { "BufReadPre", "BufNewFile" },
@@ -7,66 +9,26 @@ return {
         "j-hui/fidget.nvim",
         "folke/neovim",
         "hrsh7th/cmp-nvim-lsp",
+        "hrsh7th/nvim-cmp",
+        "hrsh7th/cmp-buffer",
         { "antosha417/nvim-lsp-file-operations", config = true },
+        "windwp/nvim-autopairs",
+        "creativenull/efmls-configs-nvim",
     },
     config = function ()
-        local lspconfig = require("lspconfig")
+        -- require("neoconf").setup({})
         local cmp_nvim_lsp = require("cmp_nvim_lsp")
-        local keymap = vim.keymap
-
-        local opts = { noremap = true, silent = true }
-        local on_attach = function(client, bufnr)
-            opts.buffer = bufnr
-
-            opts.desc = "Show LSP references"
-            keymap.set("n", "gr", "<cmd>Telescope lsp_references<CR>", opts)
-
-            opts.desc = "Go to declaration"
-            keymap.set("n", "gd", vim.lsp.buf.declaration, opts)
-
-            opts.desc = "Show LSP definitions"
-            keymap.set("n", "gD", "<cmd>Telescope lsp_definitions<CR>", opts)
-
-            opts.desc = "Show LSP implementations"
-            keymap.set("n", "gi", "<cmd>Telescope lsp_implementations<CR>", opts)
-
-            opts.desc = "Show LSP type definitions"
-            keymap.set("n", "gt", "<cmd>Telescope lsp_type_definitions<CR>", opts)
-
-            opts.desc = "See available code actions"
-            keymap.set({"n", "v"}, "<leader>ca", vim.lsp.code_action, opts)
-
-            opts.desc = "Smart rename"
-            keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
-
-            opts.desc = "Show buffer diagnostics"
-            keymap.set("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>", opts)
-
-            opts.desc = "Show line diagnostics"
-            keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts)
-
-            opts.desc = "Go to previous diagnostic"
-            keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
-
-            opts.desc = "Go to next diagnostic"
-            keymap.set("n", "[d", vim.diagnostic.goto_next, opts)
-
-            opts.desc = "Show documentation of whats under cursor"
-            keymap.set("n", "K", vim.lsp.buf.hover, opts)
-
-            opts.desc = "Restart LSP"
-            keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts)
-        end
-
+        local lspconfig = require("lspconfig")
         local capabilities = cmp_nvim_lsp.default_capabilities()
 
-        local signs = { Error = "", Warn = "", Hint = "󰠠", Info = "" }
-        for type, icon in pairs(signs) do
-            local hl = "DiagnosticSign" .. type
-            vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+        for type, icon in pairs(diagnostic_signs) do
+            local hl = "Diagnostic_Signs" .. type
+            vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = ""})
         end
 
-        lspconfig["lua_ls"].setup({
+
+        -- LUA
+        lspconfig.lua_ls.setup({
             capabilities = capabilities,
             on_attach = on_attach,
             settings = {
@@ -84,14 +46,124 @@ return {
             },
         })
 
-        lspconfig["rust_analyzer"].setup({
+        -- JSON
+        lspconfig.jsonls.setup({
+            capabilities = capabilities,
+            on_attach = on_attach,
+            filetypes = { "json", "jsonc" },
+        })
+
+        -- PYTHON
+        lspconfig.pyright.setup({
+            capabilities = capabilities,
+            on_attach = on_attach,
+            settings = {
+                pyright = {
+                    disableOrganizeImports = false,
+                    analysis = {
+                        useLibraryCodeForTypes = true,
+                        autoSearchPaths = true,
+                        diagnosticMode = "workspace",
+                        autoImportCompletions = true,
+                    },
+                },
+            },
+        })
+
+        -- BASH
+        lspconfig.bashls.setup({
+            capabilities = capabilities,
+            on_attach = on_attach,
+            filetypes = { "sh", "aliasrc" }
+        })
+
+        -- DOCKER
+        lspconfig.dockerls.setup({
             capabilities = capabilities,
             on_attach = on_attach,
         })
 
-        lspconfig["pyright"].setup({
+        -- C/C++
+        lspconfig.clangd.setup({
             capabilities = capabilities,
             on_attach = on_attach,
+            cmd = {
+                "clangd",
+                "--offset-encoding=utf-16",
+            },
+        })
+
+        -- TYPESCRIPT
+        lspconfig.tsserver.setup({
+            on_attach = on_attach,
+            capabilities = capabilities,
+            filetypes = {
+                "typescript",
+            },
+            root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json", ".git"),
+        })
+
+        -- WEBDEV EXTRA
+        lspconfig.emmet_ls.setup({
+            capabilities = capabilities,
+            on_attach = on_attach,
+            filetypes = {
+                "typescriptreact",
+                "javascriptreact",
+                "javascript",
+                "css",
+                "sass",
+                "scss",
+                "less",
+                "html",
+            },
+        })
+
+
+        local luacheck = require("efmls-configs.linters.luacheck")
+        local stylua = require("efmls-configs.formatters.stylua")
+        local flake8 = require("efmls-configs.linters.flake8")
+        local black = require("efmls-configs.formatters.black")
+        local eslint = require("efmls-configs.linters.eslint")
+        local prettier_d = require("efmls-configs.formatters.prettier_d")
+        local fixjson = require("efmls-configs.formatters.fixjson")
+        local shellcheck = require("efmls-configs.linters.shellcheck")
+        local shfmt = require("efmls-configs.formatters.shfmt")
+        local hadolint = require("efmls-configs.linters.hadolint")
+        local cpplint = require("efmls-configs.linters.cpplint")
+        local clangformat = require("efmls-configs.formatters.clang_format")
+
+
+        -- CONFIG EFM
+        lspconfig.efm.setup({
+            init_options = {
+                documentFormatting = true,
+                documentRangeFormatting = true,
+                hover = true,
+                documentSymbol = true,
+                codeAction = true,
+                completion = true,
+            },
+            settings = {
+                languages = {
+                    lua = { luacheck, stylua },
+                    python = { flake8, black },
+                    json = { eslint, fixjson },
+                    jsonc = { eslint, fixjson },
+                    sh = { shellcheck, shfmt },
+                    markdown = { prettier_d },
+                    docker = { hadolint, prettier_d },
+                    html = { prettier_d },
+                    css = { prettier_d },
+                    javascript = { eslint, prettier_d },
+                    javascriptreact = { eslint, prettier_d },
+                    typescript = { eslint, prettier_d },
+                    typescriptreact = { eslint, prettier_d },
+                    c = { clangformat, cpplint },
+                    cpp = { clangformat, cpplint },
+                    -- rust = { }
+                },
+            },
         })
 
     end,
