@@ -25,7 +25,7 @@ return {
                 "html",
                 "cssls",
                 "pyright",
-                "rust-analyzer",
+                "rust_analyzer",
             },
         automatic_installation = true,
         })

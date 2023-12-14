@@ -14,7 +14,7 @@ keymap.set('n', '<C-l>', '<C-w>l', opts)
 -- Window Management
 keymap.set('n', '<leader>sv', ':vsplit<CR>', opts)
 keymap.set('n', '<leader>sh', ':split<CR>', opts)
-keymap.set('n', '<leader>sm', ':MaximizerToggle<CR>', opts)
+keymap.set('n', '<leader>sm', ':MaximizeToggle<CR>', opts)
 
 -- Identing
 keymap.set('v', '<', '<gv')

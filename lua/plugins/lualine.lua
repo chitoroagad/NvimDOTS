@@ -9,9 +9,9 @@ local config = function ()
         },
         sections = {
             lualine_a = {
-                {
-                'buffers',
-                },
+                -- {
+                -- 'buffers',
+                -- },
             },
         }
     }
