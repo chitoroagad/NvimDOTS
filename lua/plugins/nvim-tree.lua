@@ -33,10 +33,11 @@ return {
 			},
 		},
 		filters = {
-			custom = { ".git", ".idea", ".vscode" },
+			custom = { "%.git/", "%.idea/", "%.vscode/" },
 			git_ignored = true,
 			dotfiles = false,
 		},
 		on_attach = my_on_attach,
 	},
 }
+

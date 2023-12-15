@@ -6,6 +6,6 @@ return {
 		local keymapper = require("util.keymapper").mapvimkey
 		keymapper("<leader>GG", ":GitBlameToggle<CR>", "n", opts)
 
-		vim.g.gitblame_message_template = "<author> • <summary>"
+		vim.g.gitblame_message_template = "Blame:<author> • <summary>"
 	end,
 }
