@@ -16,21 +16,29 @@ end
 
 
 return {
-	"nvim-tree/nvim-tree.lua",
-	lazy = false,
-	dependencies = { "nvim-tree/nvim-web-devicons" },
-	opts = {
-		sort_by = "case_sensitive",
-		view = {
-			width = 25,
-		},
-		renderer = {
-			group_empty = true,
-		},
-		filters = {
-			custom = { '.git', '.idea', '.vscode' },
-		},
-        on_attach = my_on_attach,
-	}
+    "nvim-tree/nvim-tree.lua",
+    lazy = false,
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    opts = {
+        git = {
+            enable = true,
+        },
+        sort_by = "case_sensitive",
+        view = {
+            width = 20,
+        },
+        renderer = {
+            group_empty = true,
+            special_files = {
+                "Cargo.toml, README.md",
+            },
+        },
+        filters = {
+            custom = { '.git', '.idea', '.vscode' },
+            git_ignored = true,
+            dotfiles = false,
 
+        },
+        on_attach = my_on_attach,
+    }
 }
