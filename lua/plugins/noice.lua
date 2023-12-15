@@ -1,13 +1,13 @@
 return {
 	"folke/noice.nvim",
 	event = "VeryLazy",
-    lazy = false,
+	lazy = false,
 	opts = {},
 	dependencies = {
-        { 
-            "MunifTanjim/nui.nvim",
-            lazy = false,
-        },
+		{
+			"MunifTanjim/nui.nvim",
+			lazy = false,
+		},
 		-- {
 		-- 	"rcarriga/nvim-notify",
 		-- 	config = function ()

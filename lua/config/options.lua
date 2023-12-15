@@ -18,7 +18,7 @@ opt.hlsearch = false
 opt.number = true
 opt.relativenumber = true
 opt.termguicolors = true
-opt.colorcolumn = '120'
+opt.colorcolumn = "120"
 opt.signcolumn = "yes"
 opt.cmdheight = 1
 opt.scrolloff = 10
@@ -33,5 +33,5 @@ opt.backspace = "indent,eol,start"
 opt.splitright = true
 opt.splitbelow = true
 opt.autochdir = false
-opt.mouse:append('a')
+opt.mouse:append("a")
 -- opt.guicursor = none
