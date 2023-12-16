@@ -39,6 +39,7 @@ return {
 				{ name = "luasnip" },
 				{ name = "buffer" },
 				{ name = "path" },
+				{ name = "crates" },
 			}),
 			formatting = {
 				format = lspkind.cmp_format({

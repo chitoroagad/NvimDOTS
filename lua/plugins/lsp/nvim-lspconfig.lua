@@ -118,17 +118,14 @@ return {
 			},
 		})
 
-		-- RUST
-		lspconfig.rust_analyzer.setup({
+		-- Text
+		lspconfig.ltex.setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
-			root_dir = lspconfig.util.root_pattern("Cargo.toml"),
-			settings = {
-				["rust_analyzer"] = {
-					cargo = {
-						allFeatures = true,
-					},
-				},
+			filetypes = {
+				"text",
+				"txt",
+				"markdown",
 			},
 		})
 
@@ -144,7 +141,6 @@ return {
 		local hadolint = require("efmls-configs.linters.hadolint")
 		local cpplint = require("efmls-configs.linters.cpplint")
 		local clangformat = require("efmls-configs.formatters.clang_format")
-		local rustfmt = require("efmls-configs.formatters.rustfmt")
 
 		-- CONFIG EFM
 		lspconfig.efm.setup({
@@ -173,7 +169,6 @@ return {
 					typescriptreact = { eslint, prettier_d },
 					c = { clangformat, cpplint },
 					cpp = { clangformat, cpplint },
-					rust = { rustfmt },
 				},
 			},
 		})

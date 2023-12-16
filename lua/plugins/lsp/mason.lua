@@ -29,6 +29,7 @@ return {
 				"clangd",
 				"jsonls",
 				"emmet_ls",
+				"letx_ls",
 
 				"luacheck",
 				"stylua",
