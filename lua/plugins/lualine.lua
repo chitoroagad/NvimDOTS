@@ -2,16 +2,22 @@ local config = function()
 	local theme = require("lualine.themes.catppuccin")
 	theme.normal.c.bg = nil
 
-	require("lualine").setup({
-		options = {
-			theme = theme,
-			globalstatus = true,
-		},
-		sections = {
-			lualine_a = { "mode" },
-			lualine_b = { "filename" },
-			lualine_c = { "branch", "diff", "diagnostics" },
-			lualine_x = { "filetype" },
+    require("lualine").setup({
+        options = {
+            section_separators = { left = '', right = '' },
+            component_separators = '|',
+            theme = theme,
+            globalstatus = true,
+        },
+        sections = {
+            lualine_a = {
+                { "mode", separator = { left = '' }, padding = { right = 1 } }
+            },
+            lualine_b = {
+                { "filename", padding = { left = 1 } }
+            },
+            lualine_c = { "branch", "diff", "diagnostics" },
+            lualine_x = { "filetype" },
             lualine_y = {
                 {
                     function()
@@ -38,11 +44,22 @@ local config = function()
                         )
                         return { fg = color }
                     end,
+                    padding = { right = 1 },
                 },
             },
-			lualine_z = { "progress" },
-		},
-	})
+            lualine_z = {
+                { "progress", separator = { right = '' }, padding = { left = 1 } }
+            },
+        },
+        inactive_sections = {
+            lualine_a = { 'filename' },
+            lualine_b = {},
+            lualine_c = {},
+            lualine_x = {},
+            lualine_y = {},
+            lualine_z = { 'location' },
+        }
+    })
 end
 
 return {
