@@ -132,7 +132,7 @@ return {
 		local stylua = require("efmls-configs.formatters.stylua")
 		local flake8 = require("efmls-configs.linters.flake8")
 		local black = require("efmls-configs.formatters.black")
-		local eslint = require("efmls-configs.linters.eslint")
+		local eslint = require("efmls-configs.linters.eslint_d")
 		local prettier_d = require("efmls-configs.formatters.prettier_d")
 		local fixjson = require("efmls-configs.formatters.fixjson")
 		local shellcheck = require("efmls-configs.linters.shellcheck")
