@@ -10,6 +10,9 @@ return {
 			definition_action_keys = {
 				edit = "<CR>",
 			},
+            symbol_in_winbar = {
+                enable = false,
+            },
 		})
 	end,
 }
