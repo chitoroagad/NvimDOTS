@@ -2,7 +2,8 @@ return {
 	"glepnir/lspsaga.nvim",
 	lazy = false,
 	config = function()
-		require("lspsaga").setup({
+		local saga = require("lspsaga")
+		saga.setup({
 			move_in_saga = { prev = "<C-k>", next = "<C-j>" },
 			finder_action_keys = {
 				open = "<CR>",
@@ -10,9 +11,12 @@ return {
 			definition_action_keys = {
 				edit = "<CR>",
 			},
-            symbol_in_winbar = {
-                enable = false,
-            },
+			symbol_in_winbar = {
+				enable = false,
+			},
+			lightbulb = {
+				virtual_text = false,
+			},
 		})
 	end,
 }
