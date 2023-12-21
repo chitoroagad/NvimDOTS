@@ -3,7 +3,7 @@ return {
     lazy = false,
     opts = {
         plugins = {
-            tmux = { enabled = true },
+            -- tmux = { enabled = true },
             kitty = { enabled = true },
             gitsigns = { enabled = false },
         },

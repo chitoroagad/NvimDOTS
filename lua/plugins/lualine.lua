@@ -48,7 +48,7 @@ local config = function()
 				},
 			},
 			lualine_z = {
-				{ "progress", separator = { right = "" }, padding = { left = 1 } },
+				{ "location", separator = { right = "" }, padding = { left = 0 } },
 			},
 		},
 		inactive_sections = {
