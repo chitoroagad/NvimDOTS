@@ -6,18 +6,6 @@ local config = function()
 		autotag = {
 			enable = true,
 		},
-		ensure_installed = {
-			"markdown",
-			"markdown_inline",
-			"json",
-			"yaml",
-			"html",
-			"css",
-			"bash",
-			"lua",
-			"dockerfile",
-			"python",
-		},
 		autoinstall = true,
 		highlight = {
 			enable = true,

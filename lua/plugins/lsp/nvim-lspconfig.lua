@@ -12,7 +12,6 @@ return {
 		"hrsh7th/cmp-buffer",
 		{ "antosha417/nvim-lsp-file-operations", config = true },
 		"windwp/nvim-autopairs",
-		"creativenull/efmls-configs-nvim",
 	},
 	config = function()
 		require("neoconf").setup({})
@@ -57,7 +56,7 @@ return {
 			on_attach = on_attach,
 			settings = {
 				pyright = {
-					disableOrganizeImports = false,
+					-- disableOrganizeImports = false,
 					analysis = {
 						useLibraryCodeForTypes = true,
 						autoSearchPaths = true,
@@ -125,50 +124,6 @@ return {
 				"text",
 				"txt",
 				"markdown",
-			},
-		})
-
-		local luacheck = require("efmls-configs.linters.luacheck")
-		local stylua = require("efmls-configs.formatters.stylua")
-		local flake8 = require("efmls-configs.linters.flake8")
-		local black = require("efmls-configs.formatters.black")
-		local eslint = require("efmls-configs.linters.eslint_d")
-		local prettier_d = require("efmls-configs.formatters.prettier_d")
-		local fixjson = require("efmls-configs.formatters.fixjson")
-		local shellcheck = require("efmls-configs.linters.shellcheck")
-		local shfmt = require("efmls-configs.formatters.shfmt")
-		local hadolint = require("efmls-configs.linters.hadolint")
-		local cpplint = require("efmls-configs.linters.cpplint")
-		local clangformat = require("efmls-configs.formatters.clang_format")
-
-		-- CONFIG EFM
-		lspconfig.efm.setup({
-			init_options = {
-				documentFormatting = true,
-				documentRangeFormatting = true,
-				hover = true,
-				documentSymbol = true,
-				codeAction = true,
-				completion = true,
-			},
-			settings = {
-				languages = {
-					lua = { luacheck, stylua },
-					python = { flake8, black },
-					json = { eslint, fixjson },
-					jsonc = { eslint, fixjson },
-					sh = { shellcheck, shfmt },
-					markdown = { prettier_d },
-					docker = { hadolint, prettier_d },
-					html = { prettier_d },
-					css = { prettier_d },
-					javascript = { eslint, prettier_d },
-					javascriptreact = { eslint, prettier_d },
-					typescript = { eslint, prettier_d },
-					typescriptreact = { eslint, prettier_d },
-					c = { clangformat, cpplint },
-					cpp = { clangformat, cpplint },
-				},
 			},
 		})
 	end,
