@@ -38,7 +38,7 @@ return {
 			local widgets = require("dap.ui.widgets")
 			local sidebar = widgets.sidebar(widgets.scopes)
 			sidebar.open()
-		end, {})
+		end)
 
 		keymap("<leader>db", ":DapToggleBreakpoint<CR>", "n", opts)
 		keymap("<leader>dus", ":OpenDapUi", "n", opts)

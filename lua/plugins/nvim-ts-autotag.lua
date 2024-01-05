@@ -1,6 +1,6 @@
 return {
 	"windwp/nvim-ts-autotag",
-	lazy = false,
+	event = { "BufEnter" },
 	dependencies = {
 		"nvim-treesitter/nvim-treesitter",
 	},
