@@ -126,11 +126,11 @@ return {
 				"txt",
 				"markdown",
 			},
-			settings = {
-				ltex = {
-					checkFrequency = "save",
-				},
-			},
+			-- settings = {
+			-- 	ltex = {
+			-- 		checkFrequency = "save",
+			-- 	},
+			-- },
 		})
 	end,
 }

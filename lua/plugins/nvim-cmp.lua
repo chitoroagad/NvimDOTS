@@ -12,13 +12,22 @@ return {
 	config = function()
 		local cmp = require("cmp")
 		local luasnip = require("luasnip")
-		local lspkind = require("lspkind")
 
 		require("luasnip.loaders.from_vscode").lazy_load()
 
 		cmp.setup({
+			window = {
+				completion = {
+					windhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
+					-- col_offset = -3,
+					side_padding = 0,
+				},
+			},
 			completion = {
 				completeopt = "menu,menuone,preview,noselect",
+				winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
+				col_offset = -3,
+				side_padding = 0,
 			},
 			snippet = {
 				expand = function(args)
@@ -42,11 +51,16 @@ return {
 				{ name = "crates" },
 			}),
 			formatting = {
-				format = lspkind.cmp_format({
-					maxwidth = 50,
-					ellipsis_char = "...",
-				}),
+				fields = { "kind", "abbr", "menu" },
+				format = function(entry, vim_item)
+					local kind = require("lspkind").cmp_format({ mode = "symbol_text", maxwidth = 50 })(entry, vim_item)
+					local strings = vim.split(kind.kind, "%s", { trimempty = true })
+					kind.kind = " " .. (strings[1] or "") .. " "
+
+					return kind
+				end,
 			},
 		})
+		require("util.pmenu-colors").setup()
 	end,
 }
