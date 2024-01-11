@@ -4,7 +4,6 @@ return {
 	"neovim/nvim-lspconfig",
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
-		"j-hui/fidget.nvim",
 		"williamboman/mason.nvim",
 		"williamboman/mason-lspconfig.nvim",
 		"folke/neovim",
@@ -13,6 +12,7 @@ return {
 		"hrsh7th/cmp-buffer",
 		{ "antosha417/nvim-lsp-file-operations", config = true },
 		"windwp/nvim-autopairs",
+		"lspcontainers/lspcontainers.nvim",
 	},
 	config = function()
 		require("neoconf").setup({})
@@ -53,6 +53,11 @@ return {
 
 		-- PYTHON
 		lspconfig.pyright.setup({
+			before_init = function(params)
+				params.processId = vim.NIL
+			end,
+			cmd = require("lspcontainers").command("pyright"),
+			root_dir = require("lspconfig/util").root_pattern(".git", vim.fn.getcwd()),
 			capabilities = capabilities,
 			on_attach = on_attach,
 			settings = {

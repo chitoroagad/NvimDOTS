@@ -18,7 +18,7 @@ return {
 		cmp.setup({
 			window = {
 				completion = {
-					windhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
+					windhighlight = "Normal:Pmenu,FloatBorder:Pmenu",
 					-- col_offset = -3,
 					side_padding = 0,
 				},

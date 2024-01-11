@@ -19,3 +19,6 @@ keymap.set("n", "<leader>sh", ":split<CR>", opts)
 keymap.set("v", "<", "<gv")
 keymap.set("v", ">", ">gv")
 
+-- Mark Management
+opts.desc = "Delete All Marks"
+keymap.set("n", "<leader>dm", ":delm!<CR>", opts)
