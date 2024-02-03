@@ -1,6 +1,11 @@
 local keymap = vim.keymap
 
 local opts = { noremap = true, silent = true }
+
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+vim.o.showmode = false
+
 -- Directory Nav
 keymap.set("n", "<C-n>", ":NvimTreeToggle<CR>", opts)
 keymap.set("n", "<leader>n", ":NvimTreeFocus<CR>", opts)

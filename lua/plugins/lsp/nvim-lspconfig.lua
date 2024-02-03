@@ -12,9 +12,11 @@ return {
 		"hrsh7th/cmp-buffer",
 		{ "antosha417/nvim-lsp-file-operations", config = true },
 		"windwp/nvim-autopairs",
+		"j-hui/fidget.nvim",
 	},
 	config = function()
 		require("neoconf").setup({})
+		require("fidget").setup()
 		local cmp_nvim_lsp = require("cmp_nvim_lsp")
 		local lspconfig = require("lspconfig")
 		local capabilities = cmp_nvim_lsp.default_capabilities()
