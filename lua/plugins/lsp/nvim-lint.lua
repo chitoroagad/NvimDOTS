@@ -14,10 +14,7 @@ return {
 
 		-- customise linters
 		local flake8 = require("lint").linters.flake8
-		flake8.args = {
-			"format=default",
-			"max-line-length=120",
-			"stdin-display-name=$FILENAME",
-		}
+		table.insert(flake8.args, "--max-line-length")
+		table.insert(flake8.args, "120")
 	end,
 }
