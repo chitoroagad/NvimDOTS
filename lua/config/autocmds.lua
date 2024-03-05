@@ -7,7 +7,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 })
 
 -- linting (on save also as some linters only support that)
-vim.api.nvim_create_autocmd({ "BufWritePost", "InsertLeave" }, {
+vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
 	callback = function()
 		require("lint").try_lint()
 	end,
