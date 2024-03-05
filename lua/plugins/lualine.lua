@@ -17,7 +17,7 @@ local config = function()
 				{ "filename", padding = { left = 1 } },
 			},
 			lualine_c = { "branch", "diff", "diagnostics" },
-			lualine_x = { "filetype" },
+			lualine_x = { { "fidget" }, { "filetype" } },
 			lualine_y = {
 				{
 					function()

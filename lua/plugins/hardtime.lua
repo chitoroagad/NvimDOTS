@@ -3,6 +3,7 @@ return {
 	dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
 	opts = {
 		disabled_filetypes = {
+			"",
 			"mason",
 			"undotree",
 			"null-ls-info",
