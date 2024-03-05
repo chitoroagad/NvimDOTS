@@ -11,5 +11,13 @@ return {
 			sh = { "shellcheck" },
 			c = { "cpplint" },
 		}
+
+		-- customise linters
+		local flake8 = require("lint").linters.flake8
+		flake8.args = {
+			"format=default",
+			"max-line-length=120",
+			"stdin-display-name=$FILENAME",
+		}
 	end,
 }
