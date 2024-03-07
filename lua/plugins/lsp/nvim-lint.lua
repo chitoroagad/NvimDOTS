@@ -5,11 +5,12 @@ return {
 		require("lint").linters_by_ft = {
 			lua = { "luacheck" },
 			python = { "flake8" },
-			javascript = { "eslint_d" },
-			typescript = { "eslint_d" },
-			json = { "jsonlint" },
+			javascript = { "biomejs" },
+			typescript = { "biomejs" },
+			json = { "biomejs" },
 			sh = { "shellcheck" },
 			c = { "cpplint" },
+			dockerfile = { "hadolint" },
 		}
 
 		-- customise linters
