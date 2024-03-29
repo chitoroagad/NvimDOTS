@@ -82,6 +82,11 @@ return {
 			},
 		})
 
+		-- lspconfig.jedi_language_server.setup({
+		-- 	capabilities = capabilities,
+		-- 	on_attach = on_attach,
+		-- })
+
 		-- BASH
 		lspconfig.bashls.setup({
 			capabilities = capabilities,
@@ -111,8 +116,13 @@ return {
 			capabilities = capabilities,
 			filetypes = {
 				"typescript",
+				"typescriptreact",
 			},
 			root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json", ".git"),
+			cmd = {
+				"typescript-language-server",
+				"--stdio",
+			},
 		})
 
 		-- WEBDEV EXTRA
@@ -120,7 +130,6 @@ return {
 			capabilities = capabilities,
 			on_attach = on_attach,
 			filetypes = {
-				"typescriptreact",
 				"javascriptreact",
 				"javascript",
 				"css",

@@ -22,7 +22,7 @@ local config = function()
 		},
 	})
 
-    telescope.load_extension("fzf")
+    -- telescope.load_extension("fzf")
 end
 
 return {
