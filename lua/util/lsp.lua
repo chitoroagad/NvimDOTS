@@ -12,8 +12,8 @@ M.on_attach = function(client, bufnr)
 	opts.desc = "Jump to declaration"
 	set("n", "<leader>gD", vim.lsp.buf.declaration, opts) -- go to definition
 	opts.desc = "Code actions"
-	set("n", "<leader>ca", vim.lsp.buf.code_action, opts) -- see available code actions
-	opts.desc = "Show implementations"
+	-- set("n", "<leader>ca", vim.lsp.buf.code_action, opts) -- see available code actions
+	-- opts.desc = "Show implementations"
 	set("n", "<leader>gi", vim.lsp.buf.implementation, opts) -- go to implementation
 	opts.desc = "Smart rename"
 	set("n", "<leader>rn", vim.lsp.buf.rename, opts) -- smart rename

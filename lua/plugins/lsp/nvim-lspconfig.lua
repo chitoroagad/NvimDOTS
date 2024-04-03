@@ -53,19 +53,6 @@ return {
 
 		-- PYTHON
 		lspconfig.pyright.setup({
-			-- before_init = function(params)
-			-- 	params.processId = vim.NIL
-			-- end,
-			-- cmd = {
-			-- 	"docker",
-			-- 	"run",
-			-- 	"-i",
-			-- 	"-rm",
-			-- 	"-v",
-			-- 	"~/Code/avanade_proj/autogen/:/autogen",
-			-- 	"autogen_img:latest",
-			-- 	"pyright",
-			-- },
 			capabilities = capabilities,
 			on_attach = on_attach,
 			settings = {
@@ -81,10 +68,10 @@ return {
 			},
 		})
 
-		-- lspconfig.jedi_language_server.setup({
-		-- 	capabilities = capabilities,
-		-- 	on_attach = on_attach,
-		-- })
+		lspconfig.ruff_lsp.setup({
+			capabilities = capabilities,
+			on_attach = on_attach,
+		})
 
 		-- BASH
 		lspconfig.bashls.setup({

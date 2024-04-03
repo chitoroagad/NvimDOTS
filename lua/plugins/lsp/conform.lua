@@ -6,7 +6,7 @@ return {
 		require("conform").setup({
 			formatters_by_ft = {
 				lua = { "stylua" },
-				python = { "black", "isort" },
+				-- python = { "ruff_format" },
 				javascript = { "biome" },
 				typescript = { "biome" },
 				javascriptreact = { "biome" },
