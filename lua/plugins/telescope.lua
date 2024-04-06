@@ -7,12 +7,15 @@ local config = function()
 		pickers = {
 			find_files = {
 				theme = "dropdown",
+				hidden = true,
 			},
 			live_grep = {
 				theme = "dropdown",
+				hidden = true,
 			},
 		},
 		defaults = {
+			path_display = { "truncate", "smart" },
 			mappings = {
 				i = {
 					["<C-j>"] = actions.move_selection_next,

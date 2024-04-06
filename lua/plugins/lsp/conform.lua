@@ -13,7 +13,6 @@ return {
 				typescriptreact = { "biome" },
 				css = { { "prettierd", "prettier" } },
 				html = { { "prettierd", "prettier" } },
-				json = { "biome" },
 				sh = { "shfmt" },
 				c = { "clang_format" },
 				rust = { "rustfmt" },
