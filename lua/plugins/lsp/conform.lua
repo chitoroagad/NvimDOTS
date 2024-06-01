@@ -18,10 +18,11 @@ return {
 				rust = { "rustfmt" },
 				markdown = { { "prettierd", "prettier" } },
 				yaml = { { "prettierd", "prettier" } },
+				nix = { "alejandra" },
 			},
 			format_on_save = {
 				lsp_fallback = true,
-				async = true,
+				-- async = true,
 				timeout = 1000,
 			},
 		})

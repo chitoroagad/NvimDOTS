@@ -43,19 +43,19 @@ return {
 		})
 
 		-- set colors
-		local colors = require("catppuccin.palettes").get_palette()
-		local NoiceColor = {
-			NoiceCmdlinePopup = { bg = colors.mantle, fg = colors.mantle },
-			NoiceCmdlinePopupBorder = { bg = colors.mantle, fg = colors.mantle },
-			NoicePopup = { bg = colors.mantle, fg = colors.mantle },
-			NoicePopupBorder = { bg = colors.mantle, fg = colors.mantle },
-			NoicePopupMenu = { bg = colors.mantle, fg = colors.mantle },
-			NoiceMini = { bg = colors.mantle, fg = colors.mantle },
-		}
+		-- local colors = require("catppuccin.palettes").get_palette()
+		-- local NoiceColor = {
+		-- 	NoiceCmdlinePopup = { bg = colors.mantle, fg = colors.mantle },
+		-- 	NoiceCmdlinePopupBorder = { bg = colors.mantle, fg = colors.mantle },
+		-- 	NoicePopup = { bg = colors.mantle, fg = colors.mantle },
+		-- 	NoicePopupBorder = { bg = colors.mantle, fg = colors.mantle },
+		-- 	NoicePopupMenu = { bg = colors.mantle, fg = colors.mantle },
+		-- 	NoiceMini = { bg = colors.mantle, fg = colors.mantle },
+		-- }
 
-		for hl, col in pairs(NoiceColor) do
-			vim.api.nvim_set_hl(0, hl, col)
-		end
+		-- for hl, col in pairs(NoiceColor) do
+		-- 	vim.api.nvim_set_hl(0, hl, col)
+		-- end
 	end,
 	dependencies = {
 		{

@@ -77,7 +77,7 @@ return {
 		lspconfig.bashls.setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
-			filetypes = { "sh", "aliasrc" },
+			filetypes = { "sh", "aliasrc", "zsh" },
 		})
 
 		-- DOCKER
@@ -135,6 +135,12 @@ return {
 				"txt",
 				"markdown",
 			},
+		})
+
+		-- Nix
+		lspconfig.nil_ls.setup({
+			capabilities = capabilities,
+			on_attach = on_attach,
 		})
 	end,
 }
